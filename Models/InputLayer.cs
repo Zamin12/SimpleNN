@@ -13,18 +13,17 @@ namespace SimpleNN.Models
 
         public int NodeCount => Row * Column;
 
-        public int[,] Input { get; set; }
+        public double[,] Input { get; set; }
 
-        public int[] InputNodes { get; set; }
+        public double[] InputNodes { get; set; }
 
-
-        public InputLayer(int row, int column, int[,] input)
+        public InputLayer(int row, int column, double[,] input)
         {
             this.Row = row;
             this.Column = column;
 
             Input = input;
-            InputNodes = new int[NodeCount];
+            InputNodes = new double[NodeCount];
 
             int z = 0;
             for (int i = 0; i <= Row - 1; i++)
@@ -40,8 +39,8 @@ namespace SimpleNN.Models
         {
             this.Row = 0;
             this.Column = 0;
-            Input = new int[0, 0];
-            InputNodes = new int[0];
+            Input = new double[0, 0];
+            InputNodes = new double[0];
         }
     }
 }

@@ -8,16 +8,17 @@ namespace SimpleNN.Models
     {
         public int NodeCount { get; set; }
         public int InputCount { get; set; }
-        public int[,] Weights { get; 
+        public double[,] Weights { get; 
             set; }
-        public int[] Bias { get; set; }
+        public double[] Bias { get; set; }
 
-        public HiddenLayer(int nodeCount, int inputCount, int[,] weights) : this(nodeCount, inputCount)
+        public HiddenLayer(int nodeCount, int inputCount, double[,] weights, double[] bias) : this(nodeCount, inputCount)
         {
             this.NodeCount = nodeCount;
             this.InputCount = inputCount;
 
             Weights = weights;
+            Bias = bias;
         }
 
         public HiddenLayer(int nodeCount, int inputCount)
@@ -25,8 +26,8 @@ namespace SimpleNN.Models
             this.NodeCount = nodeCount;
             this.InputCount = inputCount;
 
-            Weights = new int[nodeCount, inputCount];
-            Bias = new int[nodeCount];
+            Weights = new double[nodeCount, inputCount];
+            Bias = new double[nodeCount];
         }
 
     }

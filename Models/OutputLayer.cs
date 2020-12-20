@@ -6,11 +6,11 @@ namespace SimpleNN.Models
 {
     public class OutputLayer : HiddenLayer
     {
-        public OutputLayer(int nodeCount, int inputCount, int[,] weights) : base(nodeCount, inputCount, weights)
+        public OutputLayer(int nodeCount, int inputCount, double[,] weights, double[] bias) : base(nodeCount, inputCount, weights, bias)
         {
-            Result = new int[nodeCount];
+            Result = new double[nodeCount];
         }
 
-        public int[] Result { get; set; }
+        public double[] Result { get; set; }
     }
 }
