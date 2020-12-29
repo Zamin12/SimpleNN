@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SimpleNN.Helpers;
 
 namespace SimpleNN.Models
 {
     public class HiddenLayer
     {
         public int NodeCount { get; set; }
+
         public int InputCount { get; set; }
-        public double[,] Weights { get; 
-            set; }
+
+        public double[,] Weights { get; set; }
+
         public double[] Bias { get; set; }
 
-        public HiddenLayer(int nodeCount, int inputCount, double[,] weights, double[] bias) : this(nodeCount, inputCount)
+        public HiddenLayer(int inputCount, int nodeCount, double[,] weights, double[] bias) : this(nodeCount, inputCount)
         {
             this.NodeCount = nodeCount;
             this.InputCount = inputCount;
@@ -21,14 +24,15 @@ namespace SimpleNN.Models
             Bias = bias;
         }
 
-        public HiddenLayer(int nodeCount, int inputCount)
+        public HiddenLayer(int inputCount, int nodeCount)
         {
             this.NodeCount = nodeCount;
             this.InputCount = inputCount;
 
             Weights = new double[nodeCount, inputCount];
             Bias = new double[nodeCount];
+            Weights.InitWeights();
+            Bias.InitBias();
         }
-
     }
 }

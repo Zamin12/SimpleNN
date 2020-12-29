@@ -11,6 +11,11 @@ namespace SimpleNN.Models
             Result = new double[nodeCount];
         }
 
+        public OutputLayer(int nodeCount, int inputCount) : base(nodeCount, inputCount)
+        {
+            Result = new double[nodeCount];
+        }
+
         public double[] Result { get; set; }
     }
 }

@@ -1,30 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SimpleNN.Models;
 
 namespace SimpleNN.Helpers
 {
     public static class MatrixExtensions
     {
-        public static void ShowMatrix(this double[,] arr)
+        public static void ShowLayer(this HiddenLayer hiddenLayer)
         {
-            int row = arr.GetLength(0);
-            int column = arr.GetLength(1);
+            bool isOutputLayer = hiddenLayer is OutputLayer;
+            int row = hiddenLayer.Weights.GetLength(0);
+            int column = hiddenLayer.Weights.GetLength(1);
 
-            Console.WriteLine("Matrix output:");
-            for (int i = 0; i <= row - 1; i++)
+            Console.WriteLine(!isOutputLayer?"Hidden layer:": "Output Layer");
+
+            if (isOutputLayer)
             {
-                for (int j = 0; j <= column - 1; j++)
+                var outputLayer = hiddenLayer as OutputLayer;
+                for (int i = 0; i <= outputLayer.Result.Length - 1; i++)
                 {
-                    Console.Write(arr[i, j] + " ");
+                    Console.Write(outputLayer.Result[i] + " ");
                 }
-                Console.WriteLine();
             }
-            Console.ReadLine();
+            else
+            {
+                for (int i = 0; i <= row - 1; i++)
+                {
+                    for (int j = 0; j <= column - 1; j++)
+                    {
+                        Console.Write(hiddenLayer.Weights[i, j] + " ");
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
 
         public static void InitWeights(this double[,] arr)
         {
+            Random random = new Random();
+
             int row = arr.GetLength(0);
             int column = arr.GetLength(1);
 
@@ -32,12 +47,21 @@ namespace SimpleNN.Helpers
             {
                 for (int j = 0; j <= column - 1; j++)
                 {
-                    arr[i, j] = new Random().NextDouble();
+                    arr[i, j] = (double)random.Next(101) / 100.0;
                 }
-                Console.WriteLine();
             }
-            Console.ReadLine();
         }
 
+        public static void InitBias(this double[] arr)
+        {
+            Random random = new Random();
+
+            int length = arr.Length;
+
+            for (int i = 0; i <= length - 1; i++)
+            {
+                arr[i] = (double)random.Next(101) / 100.0;
+            }
+        }
     }
 }
