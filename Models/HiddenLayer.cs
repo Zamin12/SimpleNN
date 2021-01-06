@@ -15,6 +15,10 @@ namespace SimpleNN.Models
 
         public double[] Bias { get; set; }
 
+        public double[] Activations { get; set; }
+
+        public double[] Delta { get; set; }
+
         public HiddenLayer(int inputCount, int nodeCount, double[,] weights, double[] bias) : this(nodeCount, inputCount)
         {
             this.NodeCount = nodeCount;

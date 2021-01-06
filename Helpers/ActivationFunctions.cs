@@ -5,5 +5,7 @@ namespace SimpleNN.Helpers
     {
 
         public static Func<double, double> Sigmoid = (double x) => { return 1 / (1 + Math.Exp(-x)); };
+
+        public static Func<double, double> DerivativeSigmoid = (double x) => { return x * (1 -x); };
     }
 }

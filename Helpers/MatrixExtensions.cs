@@ -22,6 +22,7 @@ namespace SimpleNN.Helpers
                 {
                     Console.Write(outputLayer.Result[i] + " ");
                 }
+                Console.WriteLine();
             }
             else
             {
@@ -34,6 +35,16 @@ namespace SimpleNN.Helpers
                     Console.WriteLine();
                 }
             }
+        }
+
+        public static void ShowArray(this double[] arr)
+        {
+            Console.WriteLine("Result:");
+            for (int i = 0; i <= arr.Length - 1; i++)
+            {
+                Console.Write(Math.Round(arr[i],4) + " ");
+            }
+            Console.WriteLine();
         }
 
         public static void InitWeights(this double[,] arr)
@@ -62,6 +73,22 @@ namespace SimpleNN.Helpers
             {
                 arr[i] = (double)random.Next(101) / 100.0;
             }
+        }
+
+        public static double[] MatrixToArray(this double[,] matrix)
+        {
+            int row = matrix.GetLength(0);
+            int column = matrix.GetLength(1);
+            double[] res = new double[row * column]; 
+            int z = 0;
+            for (int i = 0; i <= row - 1; i++)
+            {
+                for (int j = 0; j <= column - 1; j++)
+                {
+                    res[z++] = matrix[i, j];
+                }
+            }
+            return res;
         }
     }
 }
