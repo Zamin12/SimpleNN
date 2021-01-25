@@ -61,12 +61,12 @@ namespace SimpleNN.Core.Models
             }
 
             OutputLayer.Result = res;
-           // OutputLayer.Result.ShowArray();
+            //OutputLayer.Result.ShowArray();
 
             return res;
         }
 
-        private void BackPropogateError(double[] expected)
+        public void BackPropogateError(double[] expected)
         {
             for (int i = HiddenLayers.Count - 1; i >=0 ; i--)
             {
@@ -102,7 +102,7 @@ namespace SimpleNN.Core.Models
             }
         }
 
-        private void UpdateWeights(double[] input)
+        public void UpdateWeights(double[] input)
         {
             for (int i = 0; i < HiddenLayers.Count; i++)
             {
@@ -119,27 +119,29 @@ namespace SimpleNN.Core.Models
             }
         }
 
-        public void TrainNetwork(int epoch, double[][,] trainData, int[] expectedData)
+        public void TrainNetwork(int epoch, TrainData[] trainData)
         {
             for (int i = 0; i < epoch; i++)
             {
-                double sumError = 0.0;
-
-                for(int j = 0; j < trainData.Length; j++)
+                for (int j = 0; j < trainData.Length; j++)
                 {
-                    var output = FeedForward(trainData[j].MatrixToArray());
-                    var expected = new double[expectedData.Length];
-                    expected[expectedData[j]] = 1;
+                    double sumError = 0.0;
 
-                    for (int k = 0; k < expected.Length; k++)
+                    var output = FeedForward(trainData[j].Data);
+                    
+                    var expected = new double[OutputLayer.Result.Length];
+                    expected[trainData[j].Result] = 1;
+
+                    for (int l = 0; l < expected.Length; l++)
                     {
-                        sumError += Math.Pow(expected[k] - output[k], 2);
+                        sumError += Math.Pow(expected[l] - output[l], 2);
                     }
 
                     BackPropogateError(expected);
-                    UpdateWeights(trainData[j].MatrixToArray());
+                    UpdateWeights(trainData[j].Data);
+
+                    Console.WriteLine($">epoch={i}, trainDataIndex={j} error={sumError}");
                 }
-             //   Console.WriteLine($">epoch={i}, error={sumError}");
             }
         }
     }

@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.gitattributes = .gitattributes
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNN.Console", "SimpleNN.Console\SimpleNN.Console.csproj", "{482FC458-3781-4992-83E2-0128319B9D80}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNN.UI", "SimpleNN.Console\SimpleNN.UI.csproj", "{482FC458-3781-4992-83E2-0128319B9D80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleNN.Core", "SimpleNN.Core\SimpleNN.Core.csproj", "{5255DC39-2065-4DEB-A00C-94237435AA3A}"
 EndProject
