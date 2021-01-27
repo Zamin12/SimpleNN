@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="SimpleNN.UI" GeneratedClassName="app">
+  <Profiles />
+  <Settings>
+    <Setting Name="trainUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\zamin.ismayilov\Documents\CSharp Projects\Data\train</Value>
+    </Setting>
+    <Setting Name="testUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Users\zamin.ismayilov\Documents\CSharp Projects\Data\test</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -16,7 +16,6 @@ namespace SimpleNN.UI
 
             do
             {
-                Console.Clear();
                 Console.Write("Actions: 1.Train 2.Test ");
                 string l = Console.ReadLine();
                 switch (int.Parse(l))
@@ -25,18 +24,19 @@ namespace SimpleNN.UI
                         Console.Write("Train size: ");
                         var trainSize = Console.ReadLine();
                         nn.TrainNetwork(int.Parse(trainSize), traindata);
+                        Console.ReadLine();
                         break;
                     case 2:
+                        Console.Write("Test size: ");
+                        var testSize = Console.ReadLine();
+
                         break;
                     default:
                         break;
                 }
-
+                Console.Clear();
             } while (true);
 
-
-
-            
 
             nn.FeedForward(traindata[5].Data).ShowArray();
             Console.Write(traindata[5].Result);
@@ -49,10 +49,10 @@ namespace SimpleNN.UI
 
         public TrainData[] ReadTrainData()
         {
-            var files = Directory.GetFiles("/Users/zaminismayilov/Documents/train/");
-            var result = new TrainData[10000];
+            var files = Directory.GetFiles(app.Default.trainUrl);
+            var result = new TrainData[100];
 
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 result[i] = new TrainData(28, 28);
 
